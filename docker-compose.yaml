@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  claude-code:
+    build: .
+    container_name: claude-playwright
+    stdin_open: true
+    tty: true
+    user: root
+    volumes:
+      - ./:/workspace
+      - ./claude-data:/root
+      - ./data:/data
+    environment:
+      - LANG=ja_JP.UTF-8
+      - LANGUAGE=ja_JP:ja
+    working_dir: /workspace
+    command: bash -c "bash /data/init.sh && /bin/bash"
