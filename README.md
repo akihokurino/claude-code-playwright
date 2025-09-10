@@ -8,38 +8,37 @@ docker-compose build --no-cache
 ## Run docker
 ```
 docker-compose up
-```
 
-## Enter docker
-```
 docker-compose exec claude-code bash
 ```
 
-## Install MCP
+## Install, Setup MCP
 ```
 claude mcp add playwright npx @playwright/mcp@latest
+
+claude mcp list
 ```
 
 `claude-data/.claude.json`
 ```
-"mcpServers": {
-    "playwright": {
-        "type": "stdio",
-        "command": "npx",
-        "args": [
-            "@playwright/mcp@latest",
-            "--config",
-            "/workspace/playwright-config.json"
-        ],
-        "env": {}
+{
+    ...
+    "mcpServers": {
+        "playwright": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "@playwright/mcp@latest",
+                "--config",
+                "/workspace/playwright-config.json"
+            ],
+            "env": {}
+        }
     }
-},
+    ...
+}
 ```
 
-## List MCP
-```
-claude mcp list
-```
 
 ## SQLite
 ```

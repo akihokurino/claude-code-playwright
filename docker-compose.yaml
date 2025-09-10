@@ -15,4 +15,9 @@ services:
       - LANG=ja_JP.UTF-8
       - LANGUAGE=ja_JP:ja
     working_dir: /workspace
-    command: bash -c "bash /data/init.sh && /bin/bash"
+    command:
+      - bash
+      - -c
+      - |
+        bash /data/init.sh
+        claude -p "CLAUDE.mdの指示内容に従って作業をしてください" --output-format stream-json --verbose
